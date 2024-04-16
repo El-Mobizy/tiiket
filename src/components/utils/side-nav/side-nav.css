@@ -1,0 +1,76 @@
+.hidden {
+}
+
+.bg-white {
+}
+
+.text-og_blue {
+}
+
+.px-3 {
+}
+
+.rounded-full {
+}
+
+.w-100 {
+    text-align: center;
+}
+
+.text-lg {
+}
+
+.mx-auto {
+}
+
+.pt-5 {
+}
+
+.text-medium {
+}
+
+.font-medium {
+}
+
+.text-sm {
+}
+
+.text-sm:hover {
+}
+
+.side-nav {
+    width: 250px;
+    height: 91vh;
+    border-radius: 0px 75px 0px 0px;
+}
+.lower-side-nav {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+}
+.lower-side-nav-content {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+
+.hr-lines{
+    position: relative;
+    max-width: 500px;
+    margin: 10px auto;
+    text-align: left;
+}
+
+
+
+.hr-lines:after{
+    content:" ";
+    height: 2px;
+    width: 100px;
+    background: white;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
