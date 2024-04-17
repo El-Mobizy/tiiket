@@ -4,6 +4,7 @@ import { FiCheckSquare, FiGrid, FiUsers, FiPlus } from 'react-icons/fi';
 import { GoSquareFill } from 'react-icons/go';
 import { ProgressBar } from '../progress-bar/progress-bar';
 import {progressData,statusData} from '../../../data';
+import { color } from 'framer-motion';
 
 export interface SideNavProps {
     className?: string;
@@ -12,7 +13,7 @@ export interface SideNavProps {
 
 export const SideNav = ({ children = 'SideNav' }: SideNavProps) => {
     return (
-        <aside className='hidden sm:flex flex-col justify-between bg-og_blue p-3 pt-5 side-nav'>
+        <aside className='hidden sm:flex flex-col justify-between bg-og_blue p-3 pt-5 side-nav ease-in duration-1000'>
             <div>
                 <button
                     className='flex gap-2 items-center bg-white text-og_blue px-3 py-1 rounded-full w-100 mx-auto font-medium hover:bg-og_blue_1 hover:text-white my-5'>
@@ -41,7 +42,7 @@ export const SideNav = ({ children = 'SideNav' }: SideNavProps) => {
             <div className='lower-side-nav'>
                 <div className='lower-side-nav-content'>
 
-                    <div className='hidden md:inline'>
+                    <div className=''>
                         <div className='max-w-500 mx-auto px-3 py-1 text-sm text-white relative'>
                             <h2 className='hr-lines'>
                                 Ticket by status
@@ -53,7 +54,7 @@ export const SideNav = ({ children = 'SideNav' }: SideNavProps) => {
 
                         <div className='flex gap-4 items-center w-100'>
                             {statusData.map((item, index) => (
-                                <div key={index} className={`flex gap-2 items-center text-sm text-${item.color}`}>
+                                <div key={index} className={`flex gap-2 items-center text-sm`} style={{ color: item.color }}>
                                     <GoSquareFill /> {item.label}
                                 </div>
                             ))}

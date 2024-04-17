@@ -73,33 +73,87 @@ export const sideNavItems = [
         text: 'Tickets',
         href: '/',
         icon: 'FiCheckSquare',
-        canHoldBadge:true,
+        canHoldBadge: true,
 
     },
     {
         text: 'Projects',
         href: '/',
         icon: 'FiGrid',
-        canHoldBadge:false,
+        canHoldBadge: false,
 
     }, {
         text: 'Teams',
         href: '/',
         icon: 'FiUsers',
-        canHoldBadge:false,
+        canHoldBadge: false,
 
     },
 ];
 
 
 export const progressData = [
-    { color: 'amber-400', progress: '60' },
+    { color: '#fbbf24', progress: '60' },
     { color: 'white', progress: '95' },
-    { color: 'green-500', progress: '40' },
+    { color: '#22c55e', progress: '40' },
 ];
 
 export const statusData = [
-    { color: 'amber-400', label: 'Pending' },
+    { color: '#fbbf24', label: 'Pending' },
     { color: 'white', label: 'Open' },
-    { color: 'green-500', label: 'Closed' },
+    { color: '#22c55e', label: 'Closed' },
+];
+
+export const team_avatars = [
+    {
+        userLetter: 'B',
+        avaterFullname: 'Badred',
+        avatarImage: null,
+    }, {
+        userLetter: 'R',
+        avaterFullname: 'Radji',
+        avatarImage:
+            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    },
+    {
+        userLetter: 'J',
+        avaterFullname: 'Jude',
+        avatarImage:
+            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    },
+
+    {
+        userLetter: 'F',
+        avaterFullname: 'Franck',
+        avatarImage:
+            'https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    },
+];
+
+export const dashboardProjects = [
+    {
+        id: 1, projectTitle: 'Aws beginner training',
+        teamMembers: [],
+        notificationCount: 3,
+    }, {
+        id: 2, projectTitle: 'Jumia Ecommerce mobile',
+        teamMembers: [],
+        notificationCount: 3,
+    }, {
+        id: 3, projectTitle: 'Flutter beginner training',
+        teamMembers: [],
+        notificationCount: 3,
+    }, {
+        id: 4, projectTitle: 'Flutter beginner training',
+        teamMembers: [],
+        notificationCount: 3,
+    }, {
+        id: 5, projectTitle: 'Flutter beginner training',
+        teamMembers: [],
+        notificationCount: 3,
+    }, {
+        id: 6, projectTitle: 'Flutter beginner training',
+        teamMembers: [],
+        notificationCount: 3,
+    },
 ];

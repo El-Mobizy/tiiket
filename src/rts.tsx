@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import ScorllareaTest from './components/scorllarea-test/scorllarea-test';
 
 // Lazy-loaded components
 const Dashboard = lazy(() => import('./components/dashboard/dashboard'));
@@ -18,6 +19,14 @@ const routes = [
         element: (
             <Suspense fallback={<div></div>}>
                 <Dashboard />
+            </Suspense>
+        ),
+    },
+    {
+        path: '/scrollarea',
+        element: (
+            <Suspense fallback={<div></div>}>
+                <ScorllareaTest />
             </Suspense>
         ),
     },

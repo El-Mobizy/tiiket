@@ -2,6 +2,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { GoSignOut, GoPerson, GoTools, GoQuestion, GoSun, GoBell } from 'react-icons/go';
 import { FiMoreVertical, FiCheck } from 'react-icons/fi';
 import { useState } from 'react';
+import { Avatar } from '../avatar/avatar';
 
 export interface HeaderDropdownProps {
     className?: string;
@@ -19,8 +20,9 @@ export const HeaderDropdown = ({
             <DropdownMenu.Trigger asChild>
                 <div className={` ${isSideNavView ? 'text-white' : 'text-gray-400'} flex gap-3 items-center px-3 py-1`}>
                     <span className='hidden md:inline flex-grow text-lg text-left'>Radji</span>
-                    <span
-                        className={`rounded-full px-3 py-1 text-3xl text-center font-semibold ${isSideNavView ? 'text-og_blue bg-white' : 'text-white bg-og_blue'}`}>R</span>
+                    {/*<span*/}
+                    {/*    className={`rounded-full px-3 py-1 text-3xl text-center font-semibold ${isSideNavView ? 'text-og_blue bg-white' : 'text-white bg-og_blue'}`}>R</span>*/}
+                    <Avatar isSideNavView={isSideNavView} avaterLetter={"R"}/>
                     <FiMoreVertical className={isSideNavView ? 'text-white' : 'text-gray-400'} />
                 </div>
 
