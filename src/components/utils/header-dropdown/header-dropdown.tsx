@@ -3,6 +3,7 @@ import { GoSignOut, GoPerson, GoTools, GoQuestion, GoSun, GoBell } from 'react-i
 import { FiMoreVertical, FiCheck } from 'react-icons/fi';
 import { useState } from 'react';
 import { Avatar } from '../avatar/avatar';
+import { SignOutButton } from '@clerk/clerk-react';
 
 export interface HeaderDropdownProps {
     className?: string;
@@ -29,27 +30,27 @@ export const HeaderDropdown = ({
             </DropdownMenu.Trigger>
 
             <DropdownMenu.Portal>
-                <DropdownMenu.Content className='bg-white shadow-2xl w-100' sideOffset={5}>
-                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
+                <DropdownMenu.Content className='bg-white shadow-2xl w-100 z-50' sideOffset={5}>
+                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
                         <GoPerson /> Profile
                     </DropdownMenu.Item>
-                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
+                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
                         <GoTools /> Account settings
                     </DropdownMenu.Item>
 
                     <DropdownMenu.Item
-                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
+                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
                         <GoBell /> Notifications <span
                         className='inline-flex items-center rounded-md bg-og_blue_2 text-red-700 px-2 py-1 text-xs font-semibold text-gray-600 ring-1 ring-inset ring-gray-500/10'>3</span>
                     </DropdownMenu.Item>
                     <DropdownMenu.Item
-                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
+                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
                         <GoQuestion /> Support
                     </DropdownMenu.Item>
 
                     <DropdownMenu.Separator className='bg-og_blue_1 h-0.5' />
                     <DropdownMenu.CheckboxItem
-                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'
+                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'
                         checked={theme}
                         onCheckedChange={setTheme}>
                         <DropdownMenu.ItemIndicator className='DropdownMenuItemIndicator'>
@@ -58,8 +59,10 @@ export const HeaderDropdown = ({
                         Dark mode <GoSun />
                     </DropdownMenu.CheckboxItem>
 
-                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
-                        <GoSignOut /> Logout
+                    <DropdownMenu.Item className="hover:outline-0">
+                        <SignOutButton>
+                            <button className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'><GoSignOut /> Sign out</button>
+                        </SignOutButton>
                     </DropdownMenu.Item>
                 </DropdownMenu.Content>
             </DropdownMenu.Portal>

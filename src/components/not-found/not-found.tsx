@@ -10,7 +10,7 @@ export interface NotFoundProps {
 export const NotFound = ({
     children = 'NotFound',
 }: NotFoundProps) => {
-    return <div className="text-center">{children}</div>;
+    return <div className="text-center text-5xl">Nothing to see here</div>;
 };
 
 export default NotFound;
