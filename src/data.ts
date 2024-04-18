@@ -1,79 +1,24 @@
-import imgUrl1 from './assets/duckies_1.png';
-import imgUrl2 from './assets/duckies_2.jpg';
-import imgUrl3 from './assets/duckies_3.jpg';
-import imgUrl4 from './assets/duckies_4.jpg';
-import imgUrl5 from './assets/duckies_5.jpg';
-import { FiCheckSquare } from 'react-icons/fi';
-
-export const RUBBER_DUCKY = {
-    id: '1234',
-    name: 'Rubber Ducky Debugging Buddy',
-    description:
-        'Never code alone when you\'ve got this rubber ducky on your desk!',
-    features: [
-        'Always listens to you',
-        'Never judges you',
-        'Helps you become the best coder you can be',
-        'Floats',
-    ],
-    images: [
-        {
-            url: imgUrl1,
-            title: 'The most loyal & helpful coworker you will ever have',
-            alt: 'sitting on a laptop keyboard',
-        },
-        {
-            url: imgUrl2,
-            title: 'No matter how big the bug, ducky is there for you',
-            alt: 'sitting next to another ducky, both facing the camera',
-        },
-        {
-            url: imgUrl3,
-            alt: 'sitting next to another ducky, both in profile facing left',
-        },
-        {
-            url: imgUrl4,
-            alt: 'swimming in different directions on a blue surface',
-        },
-        {
-            url: imgUrl5,
-            alt: 'sitting in profile facing another ducky sitting facing the camera',
-        },
-    ],
-    reviews: [
-        { rating: 5, text: 'So impressed!', date: new Date(2023, 6, 13).valueOf() },
-        { rating: 5, date: new Date(2023, 4, 10).valueOf() },
-        {
-            rating: 4,
-            text: 'Pretty good duck. I just wish it came with sunglasses.',
-            date: new Date(2023, 1, 1).valueOf(),
-        },
-        {
-            rating: 1,
-            text: 'Useless. Did not fix my bug :(',
-            date: new Date(2022, 12, 15).valueOf(),
-        },
-        { rating: 4, date: new Date(2022, 11, 11).valueOf() },
-        {
-            rating: 3,
-            text: 'Meh, ok I guess',
-            date: new Date(2022, 10, 30).valueOf(),
-        },
-    ],
-    price: 29.95,
-    sizes: ['S', 'M', 'L', 'XL'],
-};
-
-export const SCROOGE = {
-    name: 'Scrooge McDuck',
-};
-
 export const sideNavItems = [
     {
-        text: 'Tickets',
+        text: 'Open Tickets',
+        href: '/',
+        icon: 'FiInbox',
+        canHoldBadge: true,
+        notificationCount: 4,
+
+    }, {
+        text: 'New Tickets',
+        href: '/',
+        icon: 'FiAlertOctagon',
+        canHoldBadge: true,
+        notificationCount: 3,
+
+    }, {
+        text: 'Closed Tickets',
         href: '/',
         icon: 'FiCheckSquare',
         canHoldBadge: true,
+        notificationCount: 0,
 
     },
     {
@@ -81,12 +26,21 @@ export const sideNavItems = [
         href: '/',
         icon: 'FiGrid',
         canHoldBadge: false,
+        notificationCount: 0,
+
+    }, {
+        text: 'My Tasks',
+        href: '/',
+        icon: 'FiList',
+        canHoldBadge: false,
+        notificationCount: 0,
 
     }, {
         text: 'Teams',
         href: '/',
         icon: 'FiUsers',
         canHoldBadge: false,
+        notificationCount: 0,
 
     },
 ];
@@ -99,7 +53,7 @@ export const progressData = [
 ];
 
 export const statusData = [
-    { color: '#fbbf24', label: 'Pending' },
+    { color: '#fbbf24', label: 'Unsolved' },
     { color: 'white', label: 'Open' },
     { color: '#22c55e', label: 'Closed' },
 ];
@@ -131,29 +85,183 @@ export const team_avatars = [
 ];
 
 export const dashboardProjects = [
+    { id: 1, projectTitle: 'Aws beginner training', teamMembers: [], notificationCount: 3 },
+    { id: 2, projectTitle: 'Jumia Ecommerce mobile', teamMembers: [], notificationCount: 3 },
+    { id: 3, projectTitle: 'React Native Crash Course', teamMembers: [], notificationCount: 3 },
+    { id: 4, projectTitle: 'Flutter Crash Course', teamMembers: [], notificationCount: 3 },
+    { id: 5, projectTitle: 'MapReducer Crash Course', teamMembers: [], notificationCount: 3 },
+    { id: 6, projectTitle: 'Intro to Big Data', teamMembers: [], notificationCount: 3 },
+    { id: 7, projectTitle: 'Ruby Crash Course', teamMembers: [], notificationCount: 3 },
+    { id: 8, projectTitle: 'React Native Crash Course', teamMembers: [], notificationCount: 3 },
+    { id: 9, projectTitle: 'Jenkin CI/CD', teamMembers: [], notificationCount: 4 },
+    { id: 10, projectTitle: 'Backend Development', teamMembers: [], notificationCount: 2 },
+    { id: 11, projectTitle: 'UI/UX Redesign', teamMembers: [], notificationCount: 3 },
+    { id: 12, projectTitle: 'Database Optimization', teamMembers: [], notificationCount: 3 },
+    { id: 13, projectTitle: 'Machine Learning Implementation', teamMembers: [], notificationCount: 3 },
+
+];
+
+export const userTickeOptions = [
     {
-        id: 1, projectTitle: 'Aws beginner training',
-        teamMembers: [],
-        notificationCount: 3,
-    }, {
-        id: 2, projectTitle: 'Jumia Ecommerce mobile',
-        teamMembers: [],
-        notificationCount: 3,
-    }, {
-        id: 3, projectTitle: 'Flutter beginner training',
-        teamMembers: [],
-        notificationCount: 3,
-    }, {
-        id: 4, projectTitle: 'Flutter beginner training',
-        teamMembers: [],
-        notificationCount: 3,
-    }, {
-        id: 5, projectTitle: 'Flutter beginner training',
-        teamMembers: [],
-        notificationCount: 3,
-    }, {
-        id: 6, projectTitle: 'Flutter beginner training',
-        teamMembers: [],
-        notificationCount: 3,
+        text: 'View all tickets',
+        value: 'ALL',
+    },
+    {
+        text: 'View open tickets',
+        value: 'OPEN',
+    },
+    {
+        text: 'View closed tickets',
+        value: 'CLOSED',
+    },
+];
+
+export const newTickeOptions = [
+    {
+        text: 'View all tickets',
+        value: 'ALL',
+    },
+    {
+        text: 'View personal project tickets',
+        value: 'PERSONAL',
+    },
+    {
+        text: 'View invited project tickets',
+        value: 'INVITED',
+    },
+];
+
+export const newTicketTableData = [
+    {
+        // reference: 'REF1',
+        date: '2024-04-10',
+        subject: 'Issue with login page',
+        project: 'Project A',
+        projectType: 'PERSONAL',
+    },
+    {
+        // reference: 'REF2',
+        date: '2024-04-11',
+        subject: 'Bug in payment processing',
+        project: 'Project B',
+        projectType: 'INVITED',
+    },
+    {
+        // reference: 'REF3',
+        date: '2024-04-12',
+        subject: 'Feature request: Dark mode',
+        project: 'Project C',
+        projectType: 'PERSONAL',
+    },
+];
+export const userTicketTableData = [
+    {
+        reference: 'REF1234',
+        date: '2023-07-15',
+        subject: 'Product Inquiry',
+        status: 'Open',
+        lastUpdate: '2023-07-16',
+        project: 'Project X',
+    },
+    {
+        reference: 'REF5678',
+        date: '2023-08-02',
+        subject: 'Technical Support Request',
+        status: 'Closed',
+        lastUpdate: '2023-08-05',
+        project: 'Project Y',
+    },
+    {
+        reference: 'REF91011',
+        date: '2023-09-19',
+        subject: 'Billing Issue',
+        status: 'Open',
+        lastUpdate: '2023-09-21',
+        project: 'Project Z',
+    },
+    {
+        reference: 'REF121314',
+        date: '2023-10-07',
+        subject: 'Service Request',
+        status: 'Closed',
+        lastUpdate: '2023-10-10',
+        project: 'Project A',
+    },
+    {
+        reference: 'REF151617',
+        date: '2023-11-12',
+        subject: 'Complaint',
+        status: 'Open',
+        lastUpdate: '2023-11-14',
+        project: 'Project B',
+    },
+    {
+        reference: 'REF181920',
+        date: '2023-12-05',
+        subject: 'Order Status Inquiry',
+        status: 'Closed',
+        lastUpdate: '2023-12-07',
+        project: 'Project C',
+    },
+    {
+        reference: 'REF212223',
+        date: '2024-01-08',
+        subject: 'Feedback',
+        status: 'Open',
+        lastUpdate: '2024-01-09',
+        project: 'Project D',
+    },
+    {
+        reference: 'REF242526',
+        date: '2024-02-17',
+        subject: 'Request for Quotation',
+        status: 'Closed',
+        lastUpdate: '2024-02-20',
+        project: 'Project E',
+    },
+    {
+        reference: 'REF272829',
+        date: '2024-03-22',
+        subject: 'Account Activation',
+        status: 'Open',
+        lastUpdate: '2024-03-25',
+        project: 'Project F',
+    },
+    {
+        reference: 'REF303132',
+        date: '2024-04-29',
+        subject: 'Maintenance Request',
+        status: 'Closed',
+        lastUpdate: '2024-05-02',
+        project: 'Project G',
+    },
+
+];
+
+
+export const teamMembersOptions = [
+    {
+        label: 'John Alvin',
+        value: 'a2e6f3c8-9b45-4c0e-a3e2-4bfeb7d6e906',
+    },
+    {
+        label: 'Alice Johnson',
+        value: 'b3d9a1e7-6c85-4f21-bd82-7ca2d8ef458f',
+    },
+    {
+        label: 'Michael Smith',
+        value: 'c1f8d4b2-3e79-48f6-82a9-3a7c9e0d15d2',
+    },
+    {
+        label: 'Emily Wilson',
+        value: 'd0e7c6a9-2b54-491d-8f0d-6e39a8c7b3af',
+    },
+    {
+        label: 'David Brown',
+        value: 'e9f4c7b3-5a96-468e-ae32-9d28f6c5a1db',
+    },
+    {
+        label: 'Sophia Taylor',
+        value: 'f8e3b9c5-4d67-45a2-8e19-cb6d7a9e3f20',
     },
 ];

@@ -1,14 +1,32 @@
 import './header.css';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { InputGroup } from './utils/input-group/input-group';
-import { GoQuestion, GoBell, GoSun } from 'react-icons/go';
+import { GoBell, GoQuestion, GoSun } from 'react-icons/go';
 import { RxTextAlignLeft } from 'react-icons/rx';
 import LogoPng0 from '../assets/images/logo.png';
 import { HeaderDropdown } from './utils/header-dropdown/header-dropdown';
+import { useEffect, useState } from 'react';
 
 export const Header = () => {
+    const [shadowClass, setShadowClass] = useState('');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 100) {
+                setShadowClass('shadow-lg');
+            } else {
+                setShadowClass('');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
-        <nav className='p-5 w-100 flex justify-between items-center'>
+        <nav className={`p-5 w-full flex justify-between items-center fixed z-40 top-0 bg-white ${shadowClass}`}>
             <button className='md:hidden text-3xl text-gray-400'><RxTextAlignLeft /></button>
             <img src={LogoPng0} alt='app-logo' height='' width='95' className='mr-4' />
             <InputGroup />

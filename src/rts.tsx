@@ -1,6 +1,4 @@
-import React, { Suspense, lazy } from 'react';
-import ScorllareaTest from './components/scorllarea-test/scorllarea-test';
-import { SignIn, SignUp } from '@clerk/clerk-react';
+import React, { lazy, Suspense } from 'react';
 
 // Lazy-loaded components
 const Dashboard = lazy(() => import('./components/dashboard/dashboard'));

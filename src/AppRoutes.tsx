@@ -1,4 +1,5 @@
-import {Dashboard,} from '../src/components';
+import { Dashboard } from '../src/components';
+
 const approutes = [
     {
         path: '/dashboard',

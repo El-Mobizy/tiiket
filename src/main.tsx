@@ -3,11 +3,11 @@ import ReactDOMClient from 'react-dom/client';
 import './tailwind.css';
 import './reset.css';
 import App from './App';
-import { ClerkProvider, SignedIn, SignIn, SignUp, RedirectToSignIn, SignedOut } from '@clerk/clerk-react';
+import { ClerkProvider, SignedIn, SignedOut, SignIn, SignUp } from '@clerk/clerk-react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import approutes from './AppRoutes';
 
-const publishableKey = 'pk_test_bXV0dWFsLWJ1cnJvLTg3LmNsZXJrLmFjY291bnRzLmRldiQ';//process.env.REACT_APP_CLERK_PUBLISHABLE_KEY ;
+const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;//'pk_test_bXV0dWFsLWJ1cnJvLTg3LmNsZXJrLmFjY291bnRzLmRldiQ';
 
 if (!publishableKey) {
     throw new Error('Missing Publishable Key');
@@ -32,7 +32,7 @@ const RootComponent = () => {
                 />
                 <Route
                     path='/sign-up'
-                    element={<SignUp redirectUrl='/dashboard' routing='path' />}
+                    element={<SignUp redirectUrl='/dashboard' routing='path' path='/sign-up' />}
                 />
                 {approutes.map((route) => (
                     <Route key={route.path} path={route.path} element={

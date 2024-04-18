@@ -1,10 +1,8 @@
 import './side-nav.css';
-import { sideNavItems } from '../../../data';
-import { FiCheckSquare, FiGrid, FiUsers, FiPlus } from 'react-icons/fi';
+import { progressData, sideNavItems, statusData } from '../../../data';
+import { FiAlertOctagon, FiCheckSquare, FiGrid, FiInbox, FiList, FiPlus, FiUsers } from 'react-icons/fi';
 import { GoSquareFill } from 'react-icons/go';
 import { ProgressBar } from '../progress-bar/progress-bar';
-import {progressData,statusData} from '../../../data';
-import { color } from 'framer-motion';
 
 export interface SideNavProps {
     className?: string;
@@ -13,7 +11,7 @@ export interface SideNavProps {
 
 export const SideNav = ({ children = 'SideNav' }: SideNavProps) => {
     return (
-        <aside className='hidden sm:flex flex-col justify-between bg-og_blue p-3 pt-5 side-nav ease-in duration-1000'>
+        <aside className='hidden fixed sm:flex flex-col justify-between bg-og_blue p-3 pt-5 side-nav ease-in duration-1000'>
             <div>
                 <button
                     className='flex gap-2 items-center bg-white text-og_blue px-3 py-1 rounded-full w-100 mx-auto font-medium hover:bg-og_blue_1 hover:text-white my-5'>
@@ -30,10 +28,13 @@ export const SideNav = ({ children = 'SideNav' }: SideNavProps) => {
                                 {item.icon === 'FiCheckSquare' && <FiCheckSquare />}
                                 {item.icon === 'FiGrid' && <FiGrid />}
                                 {item.icon === 'FiUsers' && <FiUsers />}
+                                {item.icon === 'FiInbox' && <FiInbox />}
+                                {item.icon === 'FiList' && <FiList />}
+                                {item.icon === 'FiAlertOctagon' && <FiAlertOctagon />}
                                 {item.text}
                                 </span>
-                            {item.canHoldBadge && <span
-                                className='inline-flex items-center rounded-md bg-og_blue_2 text-red-700 px-2 py-1 text-xs font-semibold text-gray-600 ring-1 ring-inset ring-gray-500/10'>3</span>
+                            {item.canHoldBadge &&  item.notificationCount !==0 && <span
+                                className='inline-flex items-center rounded-md bg-og_blue_2 text-red-700 px-2 py-1 text-xs font-semibold text-gray-600 ring-1 ring-inset ring-gray-500/10'>{ item.notificationCount}</span>
                             }
                         </a>
                     ))}

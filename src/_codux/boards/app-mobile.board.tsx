@@ -1,10 +1,9 @@
 import { createBoard } from '@wixc3/react-board';
 import App from '../../App';
-import { RUBBER_DUCKY, SCROOGE } from '../../data';
 
 export default createBoard({
     name: 'App (mobile)',
-    Board: () => <App product={RUBBER_DUCKY} user={SCROOGE} />,
+    Board: () => <App />,
     environmentProps: {
         windowWidth: 400,
     },

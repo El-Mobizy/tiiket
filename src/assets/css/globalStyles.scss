@@ -1,0 +1,25 @@
+.standard-btn {
+  @apply bg-og_blue text-white font-bold py-2 px-4 rounded-full w-32 my-5;
+}
+
+.header-dropdown-item {
+  a,span {
+    @apply flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0;
+  }
+}
+
+.header-dropdown-item-mobile-only {
+  a {
+    @apply md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0;
+  }
+}
+.header-mobile-theme-selector{
+  @apply md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0;
+}
+.notification-counter {
+  @apply inline-flex items-center rounded-md bg-og_blue_2 text-red-700 px-2 py-1 text-xs font-semibold ring-1 ring-inset ring-gray-500/10;
+}
+
+.title-text {
+  @apply font-semibold text-gray-600 uppercase;
+}

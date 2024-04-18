@@ -1,2 +1,2 @@
-import "../tailwind.css";
-import "../reset.css";
+import '../tailwind.css';
+import '../reset.css';

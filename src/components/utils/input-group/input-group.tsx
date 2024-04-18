@@ -1,5 +1,6 @@
 import './input-group.css';
 import { BiSearch } from 'react-icons/bi';
+
 export interface InputGroupProps {
     className?: string;
     children?: React.ReactNode;

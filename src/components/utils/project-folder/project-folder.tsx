@@ -4,6 +4,7 @@ import FolderSvg from '../../../assets/images/folder.svg';
 import { GoBell } from 'react-icons/go';
 import { Avatar } from '../avatar/avatar';
 import { team_avatars } from '../../../data';
+import { truncateText } from '../../../utilityCode/truncateText';
 
 export interface ProjectFolderProps {
     className?: string;
@@ -33,8 +34,8 @@ export const ProjectFolder = ({
                 <p className='text-xs font-semibold text-gray-600 uppercase hover:text-white'>
                     Project
                 </p>
-                <p className='font-semibold text-og_blue hover:text-white'>
-                    {projectTitle}
+                <p className='font-semibold text-og_blue hover:text-white' title={projectTitle}>
+                    {truncateText(projectTitle, 20)}
                 </p>
                 <div className='flex items-center mt-3'>
                     <div className='flex-grow'>

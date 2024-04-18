@@ -1,9 +1,9 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { GoSignOut, GoPerson, GoTools, GoQuestion, GoSun, GoBell } from 'react-icons/go';
-import { FiMoreVertical, FiCheck } from 'react-icons/fi';
+import { GoBell, GoPerson, GoQuestion, GoSignOut, GoSun, GoTools } from 'react-icons/go';
+import { FiCheck, FiMoreVertical } from 'react-icons/fi';
 import { useState } from 'react';
 import { Avatar } from '../avatar/avatar';
-import { SignOutButton } from '@clerk/clerk-react';
+import { SignOutButton, useUser } from '@clerk/clerk-react';
 
 export interface HeaderDropdownProps {
     className?: string;
@@ -16,14 +16,22 @@ export const HeaderDropdown = ({
                                    isSideNavView = false,
                                }: HeaderDropdownProps) => {
     const [theme, setTheme] = useState(false);
+    const { user } = useUser();
+    const getTruncatedAndFirstLetter = (text: string, maxLength: number): [string, string] => {
+        const truncatedText = text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+        const firstLetter = text.charAt(0);
+        return [truncatedText, firstLetter];
+    };
+    const userFirstName = user?.fullName ?? user?.emailAddresses[0].emailAddress ?? '';
+    const [truncatedText, firstLetter] = getTruncatedAndFirstLetter(userFirstName, 8);
+
     return <div className='text-center'>
         <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
                 <div className={` ${isSideNavView ? 'text-white' : 'text-gray-400'} flex gap-3 items-center px-3 py-1`}>
-                    <span className='hidden md:inline flex-grow text-lg text-left'>Radji</span>
-                    {/*<span*/}
-                    {/*    className={`rounded-full px-3 py-1 text-3xl text-center font-semibold ${isSideNavView ? 'text-og_blue bg-white' : 'text-white bg-og_blue'}`}>R</span>*/}
-                    <Avatar isSideNavView={isSideNavView} avaterLetter={"R"}/>
+                    <span className='hidden md:inline flex-grow text-lg text-left'>{truncatedText}</span>
+                    <Avatar isSideNavView={isSideNavView} avaterLetter={firstLetter.toUpperCase()} avaterFullname={user?.firstName}
+                             />
                     <FiMoreVertical className={isSideNavView ? 'text-white' : 'text-gray-400'} />
                 </div>
 
@@ -31,26 +39,34 @@ export const HeaderDropdown = ({
 
             <DropdownMenu.Portal>
                 <DropdownMenu.Content className='bg-white shadow-2xl w-100 z-50' sideOffset={5}>
-                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
-                        <GoPerson /> Profile
+                    <DropdownMenu.Item
+                        className='flex items-center gap-2 my-2 p-2 text-sm text-gray-500  hover:outline-0'>
+                        <span> {userFirstName}</span>
                     </DropdownMenu.Item>
-                    <DropdownMenu.Item className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
-                        <GoTools /> Account settings
+                    <DropdownMenu.Separator className='bg-og_blue_1 h-0.5' />
+                    <DropdownMenu.Item className='header-dropdown-item'>
+                        <a href='#'><GoPerson /> Profile</a>
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item
+                        className='header-dropdown-item'>
+                        <a href='#'><GoTools /> Account settings</a>
                     </DropdownMenu.Item>
 
                     <DropdownMenu.Item
-                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
-                        <GoBell /> Notifications <span
-                        className='inline-flex items-center rounded-md bg-og_blue_2 text-red-700 px-2 py-1 text-xs font-semibold text-gray-600 ring-1 ring-inset ring-gray-500/10'>3</span>
+                        className='header-dropdown-item-mobile-only'>
+                        <a href='#'>
+                            <GoBell /> Notifications <span
+                            className='notification-counter'>3</span>
+                        </a>
                     </DropdownMenu.Item>
                     <DropdownMenu.Item
-                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'>
-                        <GoQuestion /> Support
+                        className='header-dropdown-item-mobile-only'>
+                        <a href='#'><GoQuestion /> Support</a>
                     </DropdownMenu.Item>
 
                     <DropdownMenu.Separator className='bg-og_blue_1 h-0.5' />
                     <DropdownMenu.CheckboxItem
-                        className='md:hidden flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0 hover:outline-0'
+                        className='header-mobile-theme-selector'
                         checked={theme}
                         onCheckedChange={setTheme}>
                         <DropdownMenu.ItemIndicator className='DropdownMenuItemIndicator'>
@@ -59,14 +75,16 @@ export const HeaderDropdown = ({
                         Dark mode <GoSun />
                     </DropdownMenu.CheckboxItem>
 
-                    <DropdownMenu.Item className="hover:outline-0">
+                    <DropdownMenu.Item className='hover:outline-0'>
                         <SignOutButton>
-                            <button className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'><GoSignOut /> Sign out</button>
+                            <button className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
+                                <GoSignOut /> Sign out
+                            </button>
                         </SignOutButton>
                     </DropdownMenu.Item>
                 </DropdownMenu.Content>
             </DropdownMenu.Portal>
         </DropdownMenu.Root>
-    </div>
+    </div>;
 
 };
