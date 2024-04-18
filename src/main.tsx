@@ -6,8 +6,9 @@ import App from './App';
 import { ClerkProvider, SignedIn, SignedOut, SignIn, SignUp } from '@clerk/clerk-react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import approutes from './AppRoutes';
+import "./firebase.js"
 
-const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;//'pk_test_bXV0dWFsLWJ1cnJvLTg3LmNsZXJrLmFjY291bnRzLmRldiQ';
+const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!publishableKey) {
     throw new Error('Missing Publishable Key');

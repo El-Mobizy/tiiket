@@ -11,14 +11,15 @@ function App() {
                 developers for developers</h2>
             <div className='text-center my-7 flex gap-2 justify-center'>
                 {userId == undefined && (
-                    <SignInButton className='standard-btn'
-                                  afterSignInUrl='/dashboard' />
-                )} {userId == undefined && (
-                <SignUpButton className='standard-btn'
-                              afterSignInUrl='/dashboard' />
-            )}
-                {userId !== undefined && (
-                    <div className="text-center">
+                    <div className='standard-btn'><SignInButton
+                        afterSignInUrl='/dashboard' /></div>
+                )}
+                {userId == undefined && (
+                    <div className='standard-btn'><SignUpButton
+                        afterSignInUrl='/dashboard' /></div>
+                )}
+                {userId && userId !== undefined && (
+                    <div className='text-center'>
                         <UserButton />
                         <a href='/dashboard' className='standard-btn'> Go to Dashboard</a>
                     </div>
