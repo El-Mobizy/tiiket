@@ -12,9 +12,9 @@ export interface HeaderDropdownProps {
 }
 
 export const HeaderDropdown = ({
-                                   children = 'HeaderDropdown',
-                                   isSideNavView = false,
-                               }: HeaderDropdownProps) => {
+    children = 'HeaderDropdown',
+    isSideNavView = false,
+}: HeaderDropdownProps) => {
     const [theme, setTheme] = useState(false);
     const { user } = useUser();
     const getTruncatedAndFirstLetter = (text: string, maxLength: number): [string, string] => {
@@ -31,7 +31,7 @@ export const HeaderDropdown = ({
                 <div className={` ${isSideNavView ? 'text-white' : 'text-gray-400'} flex gap-3 items-center px-3 py-1`}>
                     <span className='hidden md:inline flex-grow text-lg text-left'>{truncatedText}</span>
                     <Avatar isSideNavView={isSideNavView} avaterLetter={firstLetter.toUpperCase()} avaterFullname={user?.firstName}
-                             />
+                    />
                     <FiMoreVertical className={isSideNavView ? 'text-white' : 'text-gray-400'} />
                 </div>
 
@@ -56,7 +56,7 @@ export const HeaderDropdown = ({
                         className='header-dropdown-item-mobile-only'>
                         <a href='#'>
                             <GoBell /> Notifications <span
-                            className='notification-counter'>3</span>
+                                className='notification-counter'>3</span>
                         </a>
                     </DropdownMenu.Item>
                     <DropdownMenu.Item
@@ -76,7 +76,7 @@ export const HeaderDropdown = ({
                     </DropdownMenu.CheckboxItem>
 
                     <DropdownMenu.Item className='hover:outline-0'>
-                        <SignOutButton>
+                        <SignOutButton signOutCallback={() => { window.location.href = "/"; }}>
                             <button className='flex items-center gap-2 my-2 p-2 hover:text-og_blue hover:border-0'>
                                 <GoSignOut /> Sign out
                             </button>

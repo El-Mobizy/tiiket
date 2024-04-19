@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import ReactDOMClient from 'react-dom/client';
 import './tailwind.css';
 import './reset.css';
@@ -6,10 +6,10 @@ import App from './App';
 import { ClerkProvider, SignedIn, SignedOut, SignIn, SignUp } from '@clerk/clerk-react';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import approutes from './AppRoutes';
-import "./firebase.js"
+import './firebase.js';
 
 const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
+const ProtectedLayout = lazy(() => import('./layout/ProtectedLayout'));
 if (!publishableKey) {
     throw new Error('Missing Publishable Key');
 }
@@ -35,18 +35,20 @@ const RootComponent = () => {
                     path='/sign-up'
                     element={<SignUp redirectUrl='/dashboard' routing='path' path='/sign-up' />}
                 />
-                {approutes.map((route) => (
-                    <Route key={route.path} path={route.path} element={
-                        <div>
-                            <SignedIn>
-                                <route.component />
-                            </SignedIn>
-                            <SignedOut>
-                                <App />
-                            </SignedOut>
-                        </div>
-                    } />
-                ))}
+                <Route element={<ProtectedLayout />}>
+                    {approutes.map((route) => (
+                        <Route key={route.path} path={route.path} element={
+                            <div>
+                                <SignedIn>
+                                    <route.component />
+                                </SignedIn>
+                                <SignedOut>
+                                    <App />
+                                </SignedOut>
+                            </div>
+                        } />
+                    ))}
+                </Route>
             </Routes>
         </ClerkProvider>
     );
