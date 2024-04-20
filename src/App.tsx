@@ -1,9 +1,9 @@
 import React from 'react';
 import '../src/assets/css/globalStyles.scss';
-import { SignInButton, SignUpButton, useAuth, UserButton } from '@clerk/clerk-react';
+import { SignInButton, SignUpButton, useUser } from '@clerk/clerk-react';
 
 function App() {
-  const { user, isLoading } = useAuth();
+  const { isSignedIn } = useUser();
 
   return (
     <>
@@ -11,7 +11,7 @@ function App() {
         Welcome to the <span className="text-og_blue">TIIKET</span> app built by devs for devs
       </h2>
       <div className="text-center my-7 flex gap-2 justify-center">
-        {!user && !isLoading && (
+        {!isSignedIn  ? (
           <>
             <div className="standard-btn">
               <SignInButton afterSignInUrl="/dashboard" />
@@ -20,14 +20,12 @@ function App() {
               <SignUpButton afterSignInUrl="/dashboard" />
             </div>
           </>
-        )}
-        {user && !isLoading && (
-          <div className="text-center">
-            <UserButton />
-            <a href="/dashboard" className="standard-btn">
-              Go to Dashboard
-            </a>
-          </div>
+        ):(
+            <div className="text-center">
+                <a href="/dashboard" className="standard-btn">
+                    Go to Dashboard
+                </a>
+            </div>
         )}
       </div>
     </>

@@ -4,6 +4,7 @@ import { FiCheck, FiMoreVertical } from 'react-icons/fi';
 import { useState } from 'react';
 import { Avatar } from '../avatar/avatar';
 import { SignOutButton, useUser } from '@clerk/clerk-react';
+import { getTruncatedAndFirstLetter } from '../../../utilityCode/truncateText';
 
 export interface HeaderDropdownProps {
     className?: string;
@@ -17,11 +18,7 @@ export const HeaderDropdown = ({
 }: HeaderDropdownProps) => {
     const [theme, setTheme] = useState(false);
     const { user } = useUser();
-    const getTruncatedAndFirstLetter = (text: string, maxLength: number): [string, string] => {
-        const truncatedText = text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
-        const firstLetter = text.charAt(0);
-        return [truncatedText, firstLetter];
-    };
+
     const userFirstName = user?.fullName ?? user?.emailAddresses[0].emailAddress ?? '';
     const [truncatedText, firstLetter] = getTruncatedAndFirstLetter(userFirstName, 8);
 

@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import { Dashboard } from '../../components/dashboard/dashboard';
+import Dashboard from '../../components/dashboard/dashboard';
 
 export default createBoard({
     name: 'Dashboard',

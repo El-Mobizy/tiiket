@@ -1,54 +1,69 @@
-import { SignIn, SignUp, useUser } from '@clerk/clerk-react';
+import { SignIn, SignUp, useSession, SignedIn, SignedOut } from '@clerk/clerk-react';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import App from './App';
 import approutes from './AppRoutes';
-import { Dashboard } from './components';
 import { Header } from './components/header';
 import { Suspense } from 'react';
 import { SideNav } from './components/utils/side-nav/side-nav';
 import NotFound from './components/not-found/not-found';
 
 const BaseRoutes = () => {
-    const { user } = useUser();
+    const { isSignedIn } = useSession();
+    const ProtectedRoute = ({ children }: any) => {
+        return (
+            <>
+                <SignedIn>
+                    {children}
+                </SignedIn>
+                <SignedOut>
+                    <Navigate to='/sign-in' />
+                </SignedOut>
+            </>
+        );
+    };
 
-    const ProtectedRoute = ({ children }: any) => (
-        user ? children : <Navigate to="/" />
-    );
 
-    const routes = approutes.map(route => ({
+    const routes = approutes.map((route) => ({
         path: route.path,
         element: (
             <ProtectedRoute>
                 <Header />
-                <Suspense fallback={<div>Loading...</div>}>
-                    <main className="w-full relative flex overflow-auto mt-[100px]">
-                        <SideNav />
-                        <div className="md:ml-[250px] overflow-x-hidden mt-7 px-3 w-full">
+                <main className='w-full relative flex overflow-auto mt-[100px]'>
+                    <SideNav />
+                    <div className='md:ml-[250px] overflow-x-hidden mt-7 px-3 w-full'>
+                        <Suspense fallback={<div>Loading...</div>}>
                             {route.component}
-                        </div>
-                    </main>
-                </Suspense>
+                        </Suspense>
+                    </div>
+                </main>
             </ProtectedRoute>
         ),
     }));
 
+
     const router = createBrowserRouter([
         {
-            path: "/",
+            path: '/',
             element: <App />,
             errorElement: <NotFound />,
         },
         {
-            path: "/",
+            path: '/',
             children: routes,
         },
         {
-            path: "/sign-in",
-            element: <SignIn />,
+            path: '/sign-in',
+            element: <main className='w-fit mx-auto mt-16'>
+                <SignIn />
+            </main>,
+            errorElement: <NotFound />,
         },
         {
-            path: "/sign-up",
-            element: <SignUp />,
+            path: '/sign-up',
+            element: <main className='w-fit mx-auto mt-16'>
+                <SignUp />
+            </main>,
+            errorElement: <NotFound />,
         },
     ]);
 
