@@ -1,7 +1,7 @@
 import { Dashboard } from './components';
 import SampleComponent from './components/dashboard/SampleComponent';
 
-const approutes = [
+const approutescopy = [
     {
         path: 'sample',
         component: <SampleComponent />,
@@ -11,4 +11,4 @@ const approutes = [
         component: <Dashboard />,
     },
 ];
-export default approutes;
+export default approutescopy;
