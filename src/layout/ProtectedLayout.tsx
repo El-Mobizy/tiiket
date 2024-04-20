@@ -1,7 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from "../components/header";
-import { SideNav } from "../components/utils/side-nav/side-nav";
+import { Header } from '../components/header';
+import { SideNav } from '../components/utils/side-nav/side-nav';
+
 export const ProtectedLayout = () => {
     return (
         <>

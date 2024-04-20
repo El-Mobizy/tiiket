@@ -1,12 +1,7 @@
-import { useUser, SignIn, SignUp } from '@clerk/clerk-react';
-import {
-    Navigate,
-    Outlet,
-    RouterProvider,
-    createBrowserRouter,
-} from 'react-router-dom';
+import { SignIn, SignUp, useUser } from '@clerk/clerk-react';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import App from './App';
-import approutescopy from './AppRoutesCopy';
+import approutes from './AppRoutes';
 import { Dashboard } from './components';
 import { Header } from './components/header';
 import { Suspense } from 'react';
@@ -16,65 +11,47 @@ import NotFound from './components/not-found/not-found';
 const BaseRoutes = () => {
     const { user } = useUser();
 
-    // I created a protected route here to check if there is a user. if there's no user, it will be redirected to the sign-in page
-    // I also added setTimeout to makesure the user has been set before calling this function
-    const ProtectedRoute = ({ children }: any) => {
-        if (!user) {
-            setTimeout(() => {
-                return <Navigate to="/sign-in" />;
-            }, 3000);
-        }
+    const ProtectedRoute = ({ children }: any) => (
+        user ? children : <Navigate to="/" />
+    );
 
-        return children;
-    };
-
-    // instead of using the conventional Router provider, I made use of createBrowserRouter here to create my path and the elements
-    // I also included the children componen so it can contain the rest of the routes and also wrapped with the protected component
-
-    const routes = approutescopy.map((route) => ({
+    const routes = approutes.map(route => ({
         path: route.path,
         element: (
             <ProtectedRoute>
                 <Header />
-                <main className="w-full relative flex overflow-auto mt-[100px]">
-                    <SideNav />
-                    <div className="md:ml-[250px] overflow-x-hidden mt-7 px-3 w-full">
-                        <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <main className="w-full relative flex overflow-auto mt-[100px]">
+                        <SideNav />
+                        <div className="md:ml-[250px] overflow-x-hidden mt-7 px-3 w-full">
                             {route.component}
-                        </Suspense>
-                    </div>
-                </main>
+                        </div>
+                    </main>
+                </Suspense>
             </ProtectedRoute>
         ),
     }));
 
     const router = createBrowserRouter([
         {
-            path: '/',
+            path: "/",
             element: <App />,
             errorElement: <NotFound />,
         },
         {
-            path: '/',
+            path: "/",
             children: routes,
         },
         {
-            path: '/sign-in',
+            path: "/sign-in",
             element: <SignIn />,
-            errorElement: <NotFound />,
         },
         {
-            path: '/sign-up',
+            path: "/sign-up",
             element: <SignUp />,
-            errorElement: <NotFound />,
-        },
-        {
-            path: '/dash',
-            element: <Dashboard />,
         },
     ]);
 
-    // finally, I made use of the RouterProvider here in replicate of the BrowserRouter component, and I called the router component declared above.
     return <RouterProvider router={router} />;
 };
 

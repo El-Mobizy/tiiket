@@ -1,4 +1,4 @@
-import {lazy} from 'react';
+import { lazy } from 'react';
 
 export const lazyLoad = (path: string,exportName:string) => lazy(()=>{
     const promise= import(path)

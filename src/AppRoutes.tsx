@@ -1,9 +1,14 @@
-import { Dashboard } from '../src/components';
+import { Dashboard } from './components';
+import SampleComponent from './components/dashboard/SampleComponent';
 
 const approutes = [
     {
-        path: '/dashboard',
-        component: Dashboard, 
-    }
+        path: 'sample',
+        component: <SampleComponent />,
+    },
+    {
+        path: 'dashboard',
+        component: <Dashboard />,
+    },
 ];
 export default approutes;
